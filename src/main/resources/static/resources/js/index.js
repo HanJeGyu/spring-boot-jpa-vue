@@ -1,4 +1,4 @@
-// 함수식, IIFE 패턴, 모듈패턴, var a = (함수{})();
+/* // 함수식, IIFE 패턴, 모듈패턴, var a = (함수{})();
 // 외부함수, 내부함수가 동등  app가 init 을 인식할 수 없음
 // 클로저를 사용하여 init 인식 
 // 클로저를 JSON으로 리턴 함으로 app는 JSON 객체가 된다
@@ -204,16 +204,6 @@ function customer_list(x){
                 nextBlock.textContent=">";
                 blocks.appendChild(nextBlock);
             }
-            /* if(existPrev){
-                let prevBlock = document.createElement('span');
-                spans.setAttribute('style="display:inline-block;padding-right:20px;border: 1px solid black;cursor:pointer');
-                blocks.prepend(prevBlock);
-            }
-            if(existNext){
-                let nextBlock = document.createElement('span');
-                spans.setAttribute('style="display:inline-block;padding-right:20px;border: 1px solid black;cursor:pointer');
-                blocks.appendChild(nextBlock);
-            } */
         }
     }
     xhr.send(); // send 실행
@@ -433,4 +423,4 @@ function customer_list_form(){
     +'  </tr>'
     +'  <tbody id="tbody"></tbody>'
     +'</table>';
-}
+} */
