@@ -42,7 +42,8 @@ public class CustomerController {
     @GetMapping("/count")
     public String count() {
         System.out.println("customerController.count()");
-        int count = customerService.countAll();
+        //int count = customerService.countAll();
+        int count = 11;
         p.accept("람다 고객수 : " + count);
         System.out.println("고객수 : " + count);
         return count + "";
