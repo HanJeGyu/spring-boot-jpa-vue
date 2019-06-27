@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS customers;
+/* DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
 id INT AUTO_INCREMENT PRIMARY KEY,
 customer_id VARCHAR(15) UNIQUE NOT NULL,
@@ -42,4 +42,4 @@ insert into customers(customer_id,customer_name,password,ssn,phone,city,address,
 insert into customers(customer_id,customer_name,password,ssn,phone,city,address,postalcode) values ('dfidi','한지민','1234','780412-162513','010-7622-5423','서울특별시 마포구 토정로14길 38(신정동)','서강gs아파트 1004동102호','04093');
 insert into customers(customer_id,customer_name,password,ssn,phone,city,address,postalcode) values ('ngfeef','김미나','1234','871101-264513','010-6266-1451','서울특별시 강서구 곰달래로49가길 45(화곡동, 서강빌라)','서강빌라 109-150호','07739');
 insert into customers(customer_id,customer_name,password,ssn,phone,city,address,postalcode) values ('dfa133','이아리','1234','640412-261113','010-2134-5425','서울특별시 동작구 성대로10길 89(상도동, 서강파미에)','서강파미에 205동103호','07049');
-commit;
+commit; */

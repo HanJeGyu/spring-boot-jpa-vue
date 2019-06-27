@@ -6,8 +6,6 @@ import JoinForm from '@/components/member/JoinForm'
 import LoginForm from '@/components/member/LoginForm'
 import MemberList from '@/components/member/MemberList'
 
-import JoinFormProject from '@/components/member/JoinFormProject'
-
 Vue.use(Router)
 
 export default new Router({
@@ -17,8 +15,6 @@ export default new Router({
     {path: '/memberList',name:'memberList',component: MemberList},
     {path: '/loginform', name: 'loginform', component: LoginForm},
     {path: '/calculator', name: 'calculator', component: Calculator},
-    {path: '/joinform', name: 'joinform', component: JoinForm},
-
-    {path: '/joinformproject', name: 'joinformproject', component: JoinFormProject}
+    {path: '/joinform', name: 'joinform', component: JoinForm}
   ]
 })

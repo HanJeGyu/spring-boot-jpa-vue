@@ -32,10 +32,10 @@ public class CustomerController {
     @PostMapping("")
     // public @ResponseBody(생략됨) CustomerDTO login(@PathVariable("customerId")String id, @PathVariable("password")String pass){
     // HashMap JSON과 호환
-    public HashMap<String, Object> join(@RequestBody CustomerDTO param){
-        customerService.addCustomer(param);
+    public HashMap<String, Object> join(){
+        p.accept("POST 매핑");
         HashMap<String, Object> map = new HashMap<>();
-        map.put("result", "SUCCESS");
+        map.put("result", "post SUCCESS");
         return map;
     }
 
@@ -43,7 +43,7 @@ public class CustomerController {
     public String count() {
         System.out.println("customerController.count()");
         //int count = customerService.countAll();
-        int count = 11;
+        int count = 100;
         p.accept("람다 고객수 : " + count);
         System.out.println("고객수 : " + count);
         return count + "";
@@ -72,23 +72,24 @@ public class CustomerController {
 
     @GetMapping("/{customerId}")
     public CustomerDTO findByCustomerId(@PathVariable String customerId) {
-        System.out.println("GET 연결 ID : " + customerId);
-        return customerService.findCustomerByCustomerId(customerId);
+        p.accept("GET 매핑" + customerId);
+        customer.setCustomerId("get han");
+        return customer;
     };
 
     @PutMapping("/{customerId}")
-    public CustomerDTO modify(@RequestBody CustomerDTO param) {
-        customerService.updateCustomer(param);
-        //HashMap<String, Object> map = new HashMap<>();
-        //map.put("result", "SUCCESS");
-        return customerService.findCustomerByCustomerId(param.getCustomerId());
+    public HashMap<String, Object> modify(@PathVariable String customerId) {
+        p.accept("PUT 매핑" + customerId);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("result", "put SUCCESS");
+        return map;
     };
 
     @DeleteMapping("/{customerId}")
-    public HashMap<String, Object> delete(@RequestBody CustomerDTO param) {
-        customerService.deleteCustomer(param);
+    public HashMap<String, Object> delete(@PathVariable String customerId) {
+        p.accept("DELETE 매핑" + customerId);
         HashMap<String, Object> map = new HashMap<>();
-        map.put("result", "SUCCESS");
+        map.put("result", "delete SUCCESS");
         return map;
     };
 }

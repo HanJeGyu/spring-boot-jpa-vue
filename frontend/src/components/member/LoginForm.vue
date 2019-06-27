@@ -4,16 +4,20 @@
   <form>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" v-model="email">
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" v-model="pwd">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
     </div>
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
     </div>
-    <button @click="loginChk" type="submit" class="btn btn-default">Submit</button>
+    <button @click="loginChk" class="btn btn-default">Submit</button>
+    <button @click="get" class="btn btn-default">조회</button>
+    <button @click="post" class="btn btn-default">입력</button>
+    <button @click="put" class="btn btn-default">수정</button>
+    <button @click="del" class="btn btn-default">삭제</button>
   </form>
   <Footer></Footer>
 </div>
@@ -22,38 +26,58 @@
 <script>
 import Nav from '@/components/common/Nav.vue'
 import Footer from'@/components/common/Footer.vue'
+import axios from 'axios'
 
 export default {
-  data(){
-    loginYN: '';
-  },
   components: {
     Nav,
     Footer
   },
   methods: {
     loginChk(){
-      alert('로그인 시도 '+ this.email + this.pwd);
-      if(this.email === ''){
-        alert('이메일을 입력하세요');
-        this.$router.push({path:'/loginform'});
-      }else if(this.pwd === ''){
-        alert('비밀번호를 입력하세요');
-        this.$router.push({path:'/loginform'});
-      }
-      axios.get('/customers/count')
-        .then(d=>{
-          alert(`로그인 성공 count: ${d.data}`);
-          this.loginYN = 'SUCCESS';
-        })
-        .catch(e=>{
-          alert('ERROR');
-        })
-      if(this.loginYN==='SUCCESS'){
-        this.$router.push({path:'/'});
-      }else{
-        alert('로그인 실패');
-      }
+      axios.get('/customers/get/count')
+      .then(d=>{
+        alert(`GET SUCCESS : ${d.data.customerId}`)
+        this.$router.push({path:'/'})
+      }).catch(e=>{
+        alert('ERROR')
+      })
+    },
+    get(){
+      axios.get('/customers/get/id')
+      .then(d=>{
+        alert(`GET SUCCESS : ${d.data.customerId}`)
+      })
+      .catch(e=>{
+        alert('ERROR');
+      })
+    },
+    post(){
+      axios.post('/customers/post')
+      .then(d=>{
+        alert(`POST SUCCESS : ${d.data.result}`)
+      })
+      .catch(e=>{
+        alert('ERROR');
+      })
+    },
+    put(){
+      axios.put('/customers/put/id')
+      .then(d=>{
+        alert(`PUT SUCCESS : ${d.data.result}`)
+      })
+      .catch(e=>{
+        alert('ERROR');
+      })
+    },
+    del(){
+      axios.delete('/customers/delete/id')
+      .then(d=>{
+        alert(`DELETE SUCCESS : ${d.data.result}`);
+      })
+      .catch(e=>{
+        alert('ERROR');
+      })
     }
   }
 }
